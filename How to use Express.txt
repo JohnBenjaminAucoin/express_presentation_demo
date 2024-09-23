@@ -1,0 +1,4 @@
+Step 0: Make sure you have Node.js installed
+
+Step 1:Download express using
+    npm install express --save
