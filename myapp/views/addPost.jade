@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 Add a Post
+  form(action="/", method="POST") 
+    label(for="postTitle") Title
+    br
+    input(type='text', id='postTitle', name='postTitle', class='form-control')
+    br
+    label(for='postDesc') Description
+    br
+    input(type='text', id='postDesc', name='postDesc', class='form-control')
+    br
+    button(type='submit' value='submit' class='btn btn-primary') Submit
+
+    

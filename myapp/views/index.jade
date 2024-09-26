@@ -3,4 +3,11 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  a(href="/users") users
+  #bulletin
+  - console.log(posts)
+
+    each post in posts
+      .post 
+        h4= post.postTitle
+        p= post.postDesc
+  a(href="/addPost") Add Post
