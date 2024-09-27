@@ -10,14 +10,41 @@ const bulletinsPath = path.join(__dirname, 'bulletins.json');
 router.get('/', function(req, res, next) {
   let json = [];
   fs.readFile(bulletinsPath, 'utf8', (err, bulletins) => {
-    
+    console.log(err)
     if (!err){
+      
       json = JSON.parse(bulletins);
     }
   });
   console.log(json)
   res.render('index', { title: 'Community Bulletin Board', posts: json});
 });
+
+
+/*
+const server = http.createServer((req, res) => {
+    if (req.method === 'GET' && req.url === '/data') {
+        // Set the response header to indicate JSON content
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        
+        // Sample data to send
+        const data = {
+            message: 'Hello, this is your data!',
+            timestamp: new Date().toISOString()
+        };
+        
+        // Send the JSON response
+        res.end(JSON.stringify(data));
+    } else {
+        // Handle 404 Not Found
+        res.writeHead(404, { 'Content-Type': 'text/plain' });
+        res.end('404 Not Found');
+    }
+});
+
+*/
+
+
 
 router.post('/', (req, res) => {
   const  bulletin  =  req.body;

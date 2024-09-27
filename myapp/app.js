@@ -1,7 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
 
 //Logging middleware
 var logger = require('morgan');
@@ -20,10 +19,13 @@ app.use(logger('dev'));
 //Allows any request with carrying Json to be converted into a javascript object
 app.use(express.json());
 
+//middleware to handle url encoded strings
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+
+//middleware to serve static files ex: images css js
 app.use(express.static(path.join(__dirname, 'public')));
 
+//the last thing the middleware does is send it to be routed
 app.use('/', indexRouter);
 app.use('/addPost', addPostRouter);
 
