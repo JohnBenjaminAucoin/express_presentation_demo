@@ -15,9 +15,10 @@ router.get('/', function(req, res, next) {
       
       json = JSON.parse(bulletins);
     }
+    res.render('index', { title: 'Community Bulletin Board', posts: json});
+
   });
   console.log(json)
-  res.render('index', { title: 'Community Bulletin Board', posts: json});
 });
 
 
@@ -69,4 +70,13 @@ router.post('/', (req, res) => {
   });
 });
 
+
+
+// say we wanted to add a delete function or edit function we could add more routes here.
+/*
+router.delete('/', (req, res) => {
+  
+});
+
+*/
 module.exports = router;
